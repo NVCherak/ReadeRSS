@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="/feeds">ReadeRSS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/feeds']">Feeds</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/statistics']">Statistics</a>
+            </li>
+        </ul>
+    </div>
+    <form class="form-inline" (ngSubmit)="onSave()" #addFeedForm="ngForm">
+        <div class="form-group">
+            <input type="text" placeholder="RSS URL" [(ngModel)]="feed.url" name="rss_url" class="form-control"
+                id="rss-url" required #rssUrl="ngModel" [ngClass]="{
+                        'is-invalid': !rssUrl.valid && rssUrl.touched,
+                        'is-valid': rssUrl.valid && rssUrl.touched
+                    }">
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="addFeedForm.invalid">Add</button>
+    </form>
+</nav>

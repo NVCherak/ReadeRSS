@@ -1,0 +1,10 @@
+<div class="list-group feeds-list">
+    <div class="list-group-item list-group-item-action"
+        *ngFor="let feed of feeds">
+        <a [routerLink]="['/' + section, feed.id]"
+        routerLinkActive="active"> 
+            {{ feed.title | trim:0:30 }}
+        </a>
+        <button type="button-inline" class="btn btn-outline-danger btn-sm" (click)="deleteFeed(feed.id)">Delete</button>
+    </div>
+</div>
